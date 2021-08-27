@@ -6,11 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styles: [
   ]
 })
+
 export class BasicsComponent implements OnInit {
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  sendProductToSave(formData: any){
+    console.log(formData.value)
   }
 
 }
