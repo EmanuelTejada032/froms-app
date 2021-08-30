@@ -38,7 +38,10 @@
                            class="form-control mb-2"
                            placeholder="Product stock"
                            ngModel
-                           name="stock">
+                           customMin
+                           [minstock]="5"
+                           name="stock"
+                           required>  <!--The value minstock is send trough input decorator to customMin directive-->
                     <span class="form-text text-success">Available </span>
                 </div>
             </div>
@@ -61,6 +64,9 @@
 
             <p>Form values</p>
             <pre>{{myForm.value | json}}</pre>
+
+            <p>CustomDirective customMin</p>
+            <pre>{{myForm.controls.stock?.errors | json}}</pre>
         </div>
     </div>
 </div>
