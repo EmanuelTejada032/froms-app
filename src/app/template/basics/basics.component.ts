@@ -11,6 +11,11 @@ export class BasicsComponent implements OnInit {
 
   @ViewChild('myForm') myForm!: NgForm; //get the element called #myForm with a local reference from the html
 
+  initialFormData= {
+      name: "",
+      price: 0,
+      stock: 10
+  }
   constructor() { }
 
   ngOnInit(): void {
@@ -25,6 +30,10 @@ export class BasicsComponent implements OnInit {
 
   sendProductToSave(){
     console.log(this.myForm)
-    console.log(this.myForm.form.value)
+    this.myForm.resetForm({
+      name:  this.initialFormData.name,
+      price: this.initialFormData.name,
+      stock: this.initialFormData.name
+    })
   }
 }
