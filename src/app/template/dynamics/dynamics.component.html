@@ -1,1 +1,62 @@
-<p>dynamics works!</p>
+<h2>Template: <small>Dynamics</small></h2>
+
+<form action="" #myForm="ngForm">
+    <!-- Person Name -->
+    <div class="mb-3 row">
+        <label for="" class="col-sm-3 col-form-label">Name</label>
+        <div class="col-sm-9">
+            <input type="text"
+                   class="form-control"
+                   placeholder="Person Name" 
+                   [ngModel]="person.name" 
+                   name="name"
+                   autocomplete="off" 
+                   required >
+
+            <span class="form-text text-danger" *ngIf="validateNameField()" >This field is required, complete it to send the form</span>
+        </div>
+    </div>
+
+    <!-- Favorit input -->
+    <div class="mb-3 row">
+        <label for="" class="col-sm-3 col-form-label">Add</label>
+        <div class="col-sm-9">
+            <div class="input-group">
+                <input class="form-control"
+                       [(ngModel)]="newFavoriteGame"
+                       name="favoriteGame"
+                       (keyup.enter)="addFavoriteToList()" 
+                       placeholder="Add favorite">
+                <button class="btn btn-outline-primary" type="button"  (click)="addFavoriteToList()">Add</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Favorite section display-->
+    <div class="mb-3 row">
+        <label for="" class="col-sm-3 col-form-label">Add</label>
+        <div class="col-sm-9">
+            <div class="input-group mb-1" *ngFor="let game of person.favorites; let i = index">
+                <input  class="form-control" 
+                        [(ngModel)]="game.name" 
+                        name="Favorites_{{i}}">
+                <button class="btn btn-outline-danger" type="button" (click)="removeFavoriteFromList(i)">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <button type="button" 
+                    class="btn btn-primary float-end" 
+                    placeholder="Person Name" 
+                    (click)="save()" 
+                    [disabled]="myForm.invalid">Save</button>
+        </div>
+    </div>
+</form>
+
+<small>Form data</small>
+<pre>
+    {{person | json}}
+</pre>

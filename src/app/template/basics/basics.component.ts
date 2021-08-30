@@ -29,7 +29,7 @@ export class BasicsComponent implements OnInit {
   }
 
   sendProductToSave(){
-    console.log(this.myForm)
+    console.log(this.myForm.value)
     this.myForm.resetForm({
       name:  this.initialFormData.name,
       price: this.initialFormData.name,
