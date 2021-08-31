@@ -1,16 +1,17 @@
 <h2>Reactive: <small>Dynamics</small></h2>
 
-<form action="">
+<form (ngSubmit)="save()" action="" [formGroup]="myForm">
     <!-- Person Name -->
     <div class="mb-3 row">
         <label for="" class="col-sm-3 col-form-label">Name</label>
         <div class="col-sm-9">
             <input type="text"
                    class="form-control"
+                   formControlName="name"
                    placeholder="Person Name" 
                    autocomplete="off">
 
-            <span class="form-text text-danger" >This field is required, complete it to send the form</span>
+            <span class="form-text text-danger" *ngIf="isValidField('name')" >Required and should be 3 letters min</span>
         </div>
     </div>
 
@@ -19,7 +20,7 @@
         <label for="" class="col-sm-3 col-form-label">Add</label>
         <div class="col-sm-9">
             <div class="input-group">
-                <input class="form-control" 
+                <input class="form-control"
                        placeholder="Add favorite">
                 <button class="btn btn-outline-primary" type="button" >Add</button>
             </div>
@@ -28,11 +29,10 @@
 
     <!-- Favorite section display-->
     <div class="mb-3 row">
-        <label for="" class="col-sm-3 col-form-label">Add</label>
+        <label for="" class="col-sm-3 col-form-label"></label>
         <div class="col-sm-9">
-            <div class="input-group mb-1">
-                <input  class="form-control" 
-                        >
+            <div class="input-group mb-1" *ngFor="let favorite of myForm.controls.favorites.value">
+                <input  class="form-control" value="{{favorite}}">
                 <button class="btn btn-outline-danger" type="button">Delete</button>
             </div>
         </div>
@@ -40,7 +40,7 @@
 
     <div class="row">
         <div class="col-sm-12">
-            <button type="button" 
+            <button type="submit"
                     class="btn btn-primary float-end" 
                     placeholder="Person Name" 
                     >Save</button>
@@ -48,7 +48,11 @@
     </div>
 </form>
 
+<small>Valid</small>
+<pre>{{myForm.valid | json}}</pre>
+
+<small>Form data</small>
+<pre>{{myForm.value | json}}</pre>
+
 <!-- <small>Form data</small>
-<pre>
-    {{person | json}}
-</pre> -->
+<pre>{{myForm.value | json}}</pre> -->
