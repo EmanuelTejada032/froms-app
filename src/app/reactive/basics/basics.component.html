@@ -2,13 +2,14 @@
 
 <div class="row">
     <div class="col">
-        <form>
+        <form [formGroup]="myForm">
             <div class="mb-3 row">
                 <label for="" class="col-sm-3 col-form-label">Product</label>
                 <div class="col-sm-9">
                     <input type="text"
                            class="form-control mb-2"
                            placeholder="Product name"
+                           formControlName="name"
                            autocomplete="off"
                            >
                     <span class="form-text text-danger" >Should have 3 letters</span>
@@ -41,7 +42,7 @@
             </div>
         </form>
 
-        <!-- <div class="col">
+        <div class="col">
             <p>Form validation</p>
             <pre>{{myForm.valid}}</pre>
 
@@ -53,9 +54,6 @@
 
             <p>Form values</p>
             <pre>{{myForm.value | json}}</pre>
-
-            <p>CustomDirective customMin</p>
-            <pre>{{myForm.controls.stock?.errors | json}}</pre>
-        </div> -->
+        </div>
     </div>
 </div>
