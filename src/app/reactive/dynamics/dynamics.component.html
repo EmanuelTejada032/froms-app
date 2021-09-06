@@ -21,8 +21,10 @@
         <div class="col-sm-9">
             <div class="input-group">
                 <input class="form-control"
-                       placeholder="Add favorite">
-                <button class="btn btn-outline-primary" type="button" >Add</button>
+                       placeholder="Add favorite" 
+                       [formControl]="newFavoriteElement"
+                       (keyup.enter)="addNewFavoriteElement()">
+                <button class="btn btn-outline-primary" type="button" (click)="addNewFavoriteElement()">Add</button>
             </div>
         </div>
     </div>
@@ -30,10 +32,10 @@
     <!-- Favorite section display-->
     <div class="mb-3 row">
         <label for="" class="col-sm-3 col-form-label"></label>
-        <div class="col-sm-9">
-            <div class="input-group mb-1" *ngFor="let favorite of myForm.controls.favorites.value">
-                <input  class="form-control" value="{{favorite}}">
-                <button class="btn btn-outline-danger" type="button">Delete</button>
+        <div class="col-sm-9" formArrayName="favorites">
+            <div class="input-group mb-1" *ngFor="let favorite of favoritesArr.controls; let i = index">
+                <input  class="form-control" [formControlName]="i" >
+                <button class="btn btn-outline-danger" type="button" (click)="removeFavoriteElementFromList(i)">Delete</button>
             </div>
         </div>
     </div>
@@ -54,5 +56,5 @@
 <small>Form data</small>
 <pre>{{myForm.value | json}}</pre>
 
-<!-- <small>Form data</small>
-<pre>{{myForm.value | json}}</pre> -->
+<small>New favorite element validation</small>
+<pre>{{newFavoriteElement.valid }}</pre>
