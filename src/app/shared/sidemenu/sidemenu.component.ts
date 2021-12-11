@@ -45,6 +45,10 @@ export class SidemenuComponent {
       text: 'Switches',
       path: './reactive/switches'
     },
+    {
+      text: 'Form Group Array',
+      path: './reactive/formgroupArray'
+    },
   ];
 
 }

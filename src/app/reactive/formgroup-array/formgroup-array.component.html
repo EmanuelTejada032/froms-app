@@ -1,0 +1,108 @@
+<h2>Reactive: <small>Dynamics</small></h2>
+
+<form (ngSubmit)="saveSignUpData()" action="" [formGroup]="tournamentSignUp">
+    <!-- Person Name -->
+    <div class="mb-3 row">
+        <label for="" class="col-sm-3 col-form-label">Name</label>
+        <div class="col-sm-9">
+            <input type="text" class="form-control" formControlName="username" placeholder="Username"
+                autocomplete="off">
+
+            <span class="form-text text-danger" *ngIf="isValidField('username')">Required and should be 3 letters
+                min</span>
+        </div>
+    </div>
+    <br>
+    <form (ngSubmit)="addNewForm()" action="" [formGroup]="gameTypeForm">
+        <div class="mb-3 row">
+            <label for="" class="col-sm-3 col-form-label">Game mode</label>
+            <div class="col-sm-9">
+                <select formControlName="gameMode" placeholder="elige el modo" class="form-control" >
+                    <option *ngFor="let gameType of gameTypeList" [value]="gameType">{{gameType}}
+                </select>
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="" class="col-sm-3 col-form-label">Character</label>
+            <div class="col-sm-9">
+                <select formControlName="characterSelection" class="form-control">
+                    <option *ngFor="let character of characterList" [value]="character">{{character}}
+                </select>
+            </div>
+        </div>
+        <!-- <div class="mb-3 row">
+            <label for="" class="col-sm-3 col-form-label">game mode</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" formControlName="gameMode" placeholder="game mode"
+                    autocomplete="off">
+
+                <span class="form-text text-danger" *ngIf="isValidField('username')">Required and should be 3 letters
+                    min</span>
+            </div>
+        </div> -->
+        <!-- <div class="mb-3 row">
+            <label for="" class="col-sm-3 col-form-label">character</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" formControlName="characterSelection"
+                    placeholder="select your character" autocomplete="off">
+
+                <span class="form-text text-danger" *ngIf="isValidField('username')">Required and should be 3 letters
+                    min</span>
+            </div>
+        </div> -->
+        <div class="row">
+            <div class="col-sm-12">
+                <button type="submit" class="btn btn-primary float-end" placeholder="Person Name">add another
+                    tournament</button>
+            </div>
+        </div>
+        -
+    </form>
+    <br>
+    <div formArrayName="gamesList">
+        <div *ngFor="let game of gamesList.controls; let i = index">
+            <div class="mb-3 row">
+                <label for="" class="col-sm-3 col-form-label">Game mode</label>
+                <div class="col-sm-9">
+                    <input type="text" [value]="gameListArray[i].gameMode" class="form-control" placeholder="game mode" autocomplete="off"
+                        readonly>
+
+                    <span class="form-text text-danger" *ngIf="isValidField('username')">Required and should be 3
+                        letters
+                        min</span>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="" class="col-sm-3 col-form-label">Character</label>
+                <div class="col-sm-9">
+                    <input type="text" [value]="gameListArray[i].characterSelection" class="form-control" placeholder="select your character"
+                        autocomplete="off" readonly>
+
+                    <span class="form-text text-danger" *ngIf="isValidField('username')">Required and should be 3
+                        letters
+                        min</span>
+                </div>
+            </div>
+            <button class="btn btn-outline-danger" type="button" (click)="removeGameFromGameList(i)">Delete</button>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-sm-12">
+            <button type="submit" class="btn btn-primary float-end" placeholder="Person Name">Save</button>
+        </div>
+    </div>
+</form>
+
+<!--New forms list display-->
+
+
+<small>Valid</small>
+<pre>{{tournamentSignUp.valid | json}}</pre>
+
+<small>Form data</small>
+<pre>{{tournamentSignUp.value | json}}</pre>
+<!-- 
+<small>New favorite element validation</small>
+<pre>{{newFavoriteElement.valid }}</pre> -->

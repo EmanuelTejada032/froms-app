@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { BasicsComponent } from './basics/basics.component';
 import { DynamicsComponent } from './dynamics/dynamics.component';
+import { FormgroupArrayComponent } from './formgroup-array/formgroup-array.component';
 import { SwitchesComponent } from './switches/switches.component';
 
 const routes: Routes = [
@@ -17,6 +18,9 @@ const routes: Routes = [
       },
       {
         path: 'switches', component: SwitchesComponent
+      },
+      {
+        path: 'formgroupArray', component: FormgroupArrayComponent
       },
       {
         path: '**', redirectTo:'basics'

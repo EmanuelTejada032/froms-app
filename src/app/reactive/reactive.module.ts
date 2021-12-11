@@ -6,13 +6,16 @@ import { ReactiveRoutingModule } from './reactive-routing.module';
 import { BasicsComponent } from './basics/basics.component';
 import { DynamicsComponent } from './dynamics/dynamics.component';
 import { SwitchesComponent } from './switches/switches.component';
+import { FormgroupArrayComponent } from './formgroup-array/formgroup-array.component';
+
 
 
 @NgModule({
   declarations: [
     BasicsComponent,
     DynamicsComponent,
-    SwitchesComponent
+    SwitchesComponent,
+    FormgroupArrayComponent
   ],
   imports: [
     CommonModule,

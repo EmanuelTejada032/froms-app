@@ -12,8 +12,8 @@ export class DynamicsComponent implements OnInit {
   myForm: FormGroup = this.formBuilder.group({
     name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(25)]],
     favorites: this.formBuilder.array([
-      ['Metal Gear'],
-      ['Death Stranding'],
+      // ['Metal Gear'],
+      // ['Death Stranding'],
     ], Validators.required)
   });
 
@@ -54,7 +54,8 @@ export class DynamicsComponent implements OnInit {
       return;
     }
 
-  
     console.log(this.myForm.value)
+    this.myForm.reset();
+    this.favoritesArr.clear()
   }
 }
