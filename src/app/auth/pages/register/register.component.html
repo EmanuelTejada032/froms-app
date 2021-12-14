@@ -1,1 +1,75 @@
-<p>register works!</p>
+<h2>Validaciones Reactivas</h2>
+<hr>
+
+<div class="row">
+    <div class="col">
+        <form action="" autocomplete="off" (ngSubmit)="registerUser()" [formGroup]="myForm">
+            <div class="row mb-3">
+                <label for="" class="col-sm-3 col-form-label">Username</label>
+                <div class="col-sm-9">
+                    <input type="text"
+                           class="form-control"
+                           formControlName="username"
+                           placeholder="Username">
+                    <span class="text-danger" *ngIf="isValidField('username')">Username should be first and last name format</span>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="" class="col-sm-3 col-form-label">Email</label>
+                <div class="col-sm-9">
+                    <input type="email"
+                           class="form-control"
+                           formControlName="email"
+                           placeholder="Email">
+                    <span class="text-danger" *ngIf="isValidField('email')">Email is required</span>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="" class="col-sm-3 col-form-label">Nickname</label>
+                <div class="col-sm-9">
+                    <input type="text" 
+                           class="form-control"
+                           formControlName="nickname"
+                           placeholder="Nickname">
+                    <span class="text-danger" *ngIf="isValidField('nickname')">Should have at least 3 characters</span>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="" class="col-sm-3 col-form-label">Password</label>
+                <div class="col-sm-9">
+                    <input type="password" 
+                           class="form-control"
+                           placeholder="Password">
+                    <span class="text-danger">Should have</span>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="" class="col-sm-3 col-form-label">Confirm password</label>
+                <div class="col-sm-9">
+                    <input type="password"
+                           class="form-control"
+                           placeholder="Confirm password">
+                    <span class="text-danger">Should have</span>
+                </div>
+            </div>
+
+            <div class="row float-end">
+                <div class="col">
+                    <button class="btn btn-primary" type="submit">Crear</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<h2>Form valid: {{myForm.valid}}</h2>
+
+<h4>Name</h4>
+<pre>{{myForm.controls.username.errors | json}}</pre>
+
+<h4>Email</h4>
+<pre>{{myForm.controls.email.errors | json}}</pre>
+
+<h4>nickname</h4>
+<pre>{{myForm.controls.nickname.errors | json}}</pre>
