@@ -51,4 +51,15 @@ export class SidemenuComponent {
     },
   ];
 
+  validationsMenu: MenuItem[] = [
+    {
+      text: 'Register',
+      path: './auth/register'
+    },
+    {
+      text: 'Login',
+      path: './auth/login'
+    },
+  ];
+
 }

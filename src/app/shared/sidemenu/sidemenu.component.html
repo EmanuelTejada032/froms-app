@@ -13,3 +13,11 @@
         {{item.text}}
     </li>
 </ul>
+<br>
+<h2 class="col-4">Validations</h2>
+<hr>
+<ul class="list-group">
+    <li *ngFor="let item of validationsMenu" class="list-group-item" routerLink="{{item.path}}" routerLinkActive="active">
+        {{item.text}}
+    </li>
+</ul>
