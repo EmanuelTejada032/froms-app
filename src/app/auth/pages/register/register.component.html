@@ -39,8 +39,9 @@
                 <div class="col-sm-9">
                     <input type="password" 
                            class="form-control"
+                           formControlName="password"
                            placeholder="Password">
-                    <span class="text-danger">Should have</span>
+                    <span class="text-danger"  *ngIf="isValidField('password')">Must be at least 6 characters long</span>
                 </div>
             </div>
             <div class="row mb-3">
@@ -48,14 +49,15 @@
                 <div class="col-sm-9">
                     <input type="password"
                            class="form-control"
+                           formControlName="confirmPassword"
                            placeholder="Confirm password">
-                    <span class="text-danger">Should have</span>
+                    <span class="text-danger"  *ngIf="isValidField('confirmPassword')">Passwords must be equals</span>
                 </div>
             </div>
 
             <div class="row float-end">
                 <div class="col">
-                    <button class="btn btn-primary" type="submit">Crear</button>
+                    <button class="btn btn-primary" type="submit" [disabled]="myForm.pending">Crear</button>
                 </div>
             </div>
         </form>
@@ -64,6 +66,10 @@
 
 
 <h2>Form valid: {{myForm.valid}}</h2>
+<h2>Form Status: {{myForm.status}}</h2>
+<h2>Form Pending: {{myForm.pending}}</h2>
+
+<h2>Form errors: {{myForm.errors | json}}</h2>
 
 <h4>Name</h4>
 <pre>{{myForm.controls.username.errors | json}}</pre>
@@ -73,3 +79,10 @@
 
 <h4>nickname</h4>
 <pre>{{myForm.controls.nickname.errors | json}}</pre>
+
+<h4>password</h4>
+<pre>{{myForm.controls.password.errors | json}}</pre>
+
+<h4>confirm password</h4>
+<pre>{{myForm.controls.confirmPassword.errors | json}}</pre>
+
