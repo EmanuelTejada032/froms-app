@@ -15,9 +15,9 @@ export class EmailAsyncValidatorService implements AsyncValidator {
     const email = control.value
     return this.http.get<any[]>(`http://localhost:3000/usuarios?q=${email}`)
     .pipe(
-      delay(3000),
+      delay(1000),
       map(response => {
-        return (response.length === 0)? null: {emailValidation: "this email is already in use"}
+        return (response.length === 0)? null: {emailTaken: true}
       })
     )
   }

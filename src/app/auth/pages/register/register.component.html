@@ -21,7 +21,7 @@
                            class="form-control"
                            formControlName="email"
                            placeholder="Email">
-                    <span class="text-danger" *ngIf="isValidField('email')">Email is required</span>
+                    <span class="text-danger" *ngIf="isValidField('email')">{{emailErrorMessage}}</span>
                 </div>
             </div>
             <div class="row mb-3">
